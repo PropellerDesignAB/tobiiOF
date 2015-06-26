@@ -6,28 +6,33 @@ Some use instructions:
 Don't forget to link dependencies "includes" and "bin" in VS 
 and the "Tobii.EyeX.Client.dll" in the executable folder.
 
----
-
-// ofApp.h
+In file ofApp.h include:
+```
 #include "../stdafx.h"
 #include "eyex/EyeX.h"
 #include "../eyeXHost.h"
+```
 
-// in class methods add:
+In class methods ofApp.h:
+```
 eyeXHost eyex;
+```
 
----
-
-// ofApp.cpp
-// in the setup() method add:
+In file ofApp.cpp setup() method add:
+```
 eyex.init();
+```
 
-// #1 in the update() method add (if you'd like raw data)
+In the update() method add these lines to use the raw data:
+```
 posX = eyex.gazePoint.x;
 posY = eyex.gazePoint.y;
+```
 
-// 2# (if you'd like slightly averaged data)
+In the update() method add these lines to use the averaged data:
+```
 posX = eyex.gazePoint.x*0.25 + posX*0.75;
 posY = eyex.gazePoint.y*0.25 + posY*0.75;
+```
 
-// use posX and posY as you please.
+Use posX and posY as you please.
